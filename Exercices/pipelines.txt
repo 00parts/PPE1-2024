@@ -1,1 +1,46 @@
+Liste des commandes :
+
+1A :
+
+echo "Annotations en 2016" > /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/comptes.txt
+cd Exercice1/ann/2016
+cat */*.ann | wc >> /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/comptes.txt
+cd ../
+cd 2017
+echo "Annotations en 2017" >>/home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/comptes.txt
+cat */*.ann |  wc >> /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/comptes.txt
+cd ../
+cd 2018
+echo "Annotations en 2018" >> /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/comptes.txt
+cat */*.ann | wc >> /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/comptes.txt
+
+
+
+1B :
+
+cd Exercice1/ann/2016
+echo "Annotations de lieux en 2016" >/home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/locations.txt
+cat */*.ann | egrep "Location" | wc >> /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/locations.txt
+cd ../
+cd 2017
+echo "Annotations de lieux en 2017" >>/home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/locations.txt
+cat */*.ann | egrep "Location" | wc >> /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/locations.txt
+echo "Annotations de lieux en 2018" >>/home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/locations.txt
+cat */*.ann | egrep "Location" | wc >> /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/locations.txt
+
+2A :
+
+cd Exercice1/ann/2016
+cat */*.ann | egrep "Location" | cut -f 3 | sort -d | uniq -c | sort -n | tail -n 15  > /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/classement_2016.txt
+cd ../
+cd 2017
+cat */*.ann | egrep "Location" | cut -f 3 | sort -d | uniq -c | sort -n | tail -n 15  > /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/classement_2017.txt
+cd ../
+cd 2018
+cat */*.ann | egrep "Location" | cut -f 3 | sort -d | uniq -c | sort -n | tail -n 15  > /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/classement_2018.txt
+
+2B :
+
+cd Exercice1/ann
+cat */12/*.ann | egrep "Location" | cut -f 3 | sort -d | uniq -c | sort -n | tail -n 15  > /home/maiwenn/Documents/PPE/Dépôt\ PPE/PPE1-2024/Exercices/classement_décembre.txt
 
