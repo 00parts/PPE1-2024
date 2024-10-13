@@ -18,3 +18,5 @@ A la maison, nous devions créer notre propre dépôt git et le synchroniser ave
 ## Séance du 09/10/24 et exercice
 
 ### Exercices git
+
+Cette ligne doit rester après correction.
