@@ -32,3 +32,5 @@ A la maison, nous devions créer notre propre dépôt git et le synchroniser ave
 ### Exercices git correction d'erreurs
 
 Cette ligne doit rester après correction.
+
+Cette ligne est mise de côté
