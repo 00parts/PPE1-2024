@@ -29,6 +29,6 @@ A la maison, nous devions créer notre propre dépôt git et le synchroniser ave
  Ensuite, on remet une commande sort mais cette fois ci avec l'option -n, qui permet de trier les nombres par ordre croissant. Enfin, pour pouvoir garder uniquement que les 15 dernières lignes (celles avec le plus grand nombre d'occurences donc) on fait `tail -n 15`. L'option -n permet d'indiquer un nombre N de lignes, ici 15.
  Une fois qu'on a trouvé cette pipeline, le reste de l'exercice a été fait rapidement.
 
-### Exercices git
+### Exercices git correction d'erreurs
 
 Cette ligne doit rester après correction.
