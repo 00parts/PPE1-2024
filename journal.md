@@ -82,3 +82,21 @@ Enfin on affiche le contenu de la variable OK et NOK dans une chaîne de caract�
 `echo -e "$i \t $line"`
 `i=$((i + 1))`
 Avec notamment \t qui permet d'insérer une tabulation entre le numéro et la ligne elle-même.
+
+### Exercice 2
+
+Pour cette exercice je n'ai pas eu de mal avec le script en soi, je savais comment obtenir le code http, l'encoding et le nombre de mots dans la page mais j'ai eu un problème lors de l'ouput qui m'a bloqué pendant très longtemps : j'avais une variable count qui contient le résultat de la pipeline pour obtenir le nombre de mots. J'avais une commande echo dans laquelle je plaçais mes variables séparées par une tabulation et à la fin il y avait la variable count. Or, lorsque je lançais le script, le nombre de mots s'affichait bizarrement, il s'insérait à l'intérieur du lien. J'avais ceci :
+```
+ 1       6401 ://fr.wikipedia.org/wiki/Robot     200     UTF-8
+ 2       1171 ://fr.wikipedia.org/wiki/Robot_de_cuisine          200     UTF-8
+ 3       1730 ://fr.wikipedia.org/wiki/Robot_d%27indexation      200     UTF-8
+ 4       2278 ://fr.wikipedia.org/wiki/Bot_informatique          200     UTF-8
+ 5       1157 ://fr.wikipedia.org/wiki/Atlas_(robot)     200     UTF-8
+ 6       https://roboty.magistry.fr      200     null    35
+ 7       1618 ://fr.wikipedia.org/wiki/Robot_(Léonard_de_Vinci)          200     UTF-8
+ 8       4525 ://fr.wiktionary.org/wiki/robot    200     UTF-8
+ 9       1048 ://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots        200     UTF-8
+ 10      12985 //fr.wikipedia.org/wiki/Robotique         200     UTF-8
+ ```
+ J'ai passé des heures à essayer de comprendre pourquoi, puis j'ai fini par demander de l'aide sur stackoverflow. Quelqu'un m'a dit d'essayer de faire `bash -x monscript.sh` pour voir en temps réel ce que le code faisait. Et là j'ai vu que ma variable charset était comme ceci : `charset=$'UTF-8\r'`. Il y avait un retour chariot à la fin de la variable, qui m'était invisible. Cela forçait la variable count à s'insérer à gauche et causait l'étrange affichage. J'ai donc utilisé la commande "sed" pour retirer /r de la variable charset et tout est rentré dans l'ordre.
+ J'ai eu aussi un problème au tout début pour récupérer l'encoding d'une des URL car je n'avais pas prévu le cas où il n'y aurait pas d'information sur l'encoding avec curl, ce qui était le cas pour https://roboty.magistry.fr. J'ai donc dû ajouter une condition if pour faire en sorte que si charset est vide, alors on renomme la variable avec "no_info" pour que la variable ne soit pas vide, ce qui causait des soucis.
