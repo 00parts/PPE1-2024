@@ -69,3 +69,16 @@ Je ne suis pas sûre de la signification de `< $FICHIER_URLS` après done, mais 
 
 Enfin on affiche le contenu de la variable OK et NOK dans une chaîne de caractères qui indique le nombre d'URLS correctes et le nombre de lignes douteuses.
 
+## Séance du 06/11/24 et exercices
+
+### Exercice 1
+
+1) Je ne suis pas sûre, mais je pense que c'est parce que `while read` permet d'itérer sur chaque ligne du fichier, alors que `cat` récupère toutes les lignes d'un coup.
+
+2) On remplace urls/fr.txt par une variable dans le code qu'on peut nommer `urls = $1` par exemple. Comme ça, on peut mettre en argument n'importe quel fichier contenant des urls quand on appelle le script. Ce qui sera utile puisqu'on aura des fichiers d'URL pour chaque langue, pas que pour le français.
+2.1) On utilise `if [ $# -ne 1 ]` pour vérifier qu'un seul argument a bien été donné. On peut aussi tester la validité de ce fichier en faisant un test qui vérifie que le fichier a bien une extension ".txt" et qui arrête le script dans le cas contraire avec `if ! [[ $urls =~ ".txt"$ ]]`
+
+3) Pour afficher les numéros de ligne pour chaque ligne dans la boucle `while read` on peut déclarer une variable `i` qui est égale à 1 et on peut incrémenter sa valeur de 1 à chaque tour de boucle, c'est-à-dire à chaque ligne lue. On aura
+`echo -e "$i \t $line"`
+`i=$((i + 1))`
+Avec notamment \t qui permet d'insérer une tabulation entre le numéro et la ligne elle-même.
