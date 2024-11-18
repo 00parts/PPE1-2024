@@ -14,6 +14,8 @@ echo "Ce n'est pas un format valide"
 exit 2
 fi
 
+echo '<html><head><title>Tableau-fr</title><meta charset="UTF-8"></head><body><table><tr><th>Numéro de ligne</th><th>URL</th><th>Code HTTP</th><th>Encodage</th><th>Nombre de mots</th></tr>' > ./tableaux/tableau-fr.html
+
 i=1
 while read -r line
 do
@@ -24,6 +26,8 @@ then
 charset="no_info"
 fi
 count=$(lynx "$line" -dump -nolist | wc -w)
-echo -e " $i \t $line \t $code \t $charset \t $count " >> ./tableaux/tableau-fr.tsv
+echo -e "<tr><td>$i</td><td>$line</td><td>$code</td><td>$charset</td><td>$count</td></tr>" >> ./tableaux/tableau-fr.html
 i=$((i + 1))
 done < $urls
+
+echo '</table></body></html>' >> ./tableaux/tableau-fr.html
