@@ -14,7 +14,8 @@ echo "Ce n'est pas un format valide"
 exit 2
 fi
 
-echo '<html><head><title>Tableau-fr</title><meta charset="UTF-8"></head><body><table><tr><th>Numéro de ligne</th><th>URL</th><th>Code HTTP</th><th>Encodage</th><th>Nombre de mots</th></tr>' > ./tableaux/tableau-fr.html
+echo '<html><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"><title>Tableau-fr</title><meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"></head><body><section class="hero has-background-black"><div class="hero-body"><p class="title has-text-centered has-text-success">Tableau des URLs.</p></div></section><section class="section has-background-success">
+<div class="hero has-background-black is-small"><div class="hero-body"><table class="table is-bordered is-hoverable mx-auto my-6"><tr class="is-warning"><th>Numéro de ligne</th><th>URL</th><th>Code HTTP</th><th>Encodage</th><th>Nombre de mots</th></tr>' > ./tableaux/tableau-fr.html
 
 i=1
 while read -r line
@@ -30,4 +31,4 @@ echo -e "<tr><td>$i</td><td>$line</td><td>$code</td><td>$charset</td><td>$count<
 i=$((i + 1))
 done < $urls
 
-echo '</table></body></html>' >> ./tableaux/tableau-fr.html
+echo '</table></div></div></div></div><div></section><footer class="footer has-background-black"><div class="content has-text-centered has-text-warning"><p><em>Maïwenn Plevenage / 00parts</em> - <b>2024</b></p></div></footer></body></html>' >> ./tableaux/tableau-fr.html
